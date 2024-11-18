@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Recommendation System</title>
+
+<!-- Inline CSS for styling -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        color: #007BFF;
+    }
+
+    h2 {
+        margin-top: 20px;
+        color: #007BFF;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+
+    ul, ol {
+        margin-left: 20px;
+    }
+
+    pre {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+
+    code {
+        color: #d63384;
+    }
+
+    .example-output {
+        background: #e8f5e9;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Movie Recommendation System</h1>
+    <p>A machine learning-based project that recommends similar movies based on user input.</p>
+
+    <section class="overview">
+        <h2>Project Overview</h2>
+        <p>This project uses a movie dataset to recommend movies based on various features such as keywords, genres, popularity, director, and cast. It uses text processing and cosine similarity to find and recommend similar movies.</p>
+    </section>
+
+    <section class="dataset">
+        <h2>Dataset Used</h2>
+        <p>The project uses a dataset containing information about movies, including their titles, genres, keywords, popularity, director, and cast.</p>
+    </section>
+
+    <section class="tech-stack">
+        <h2>Technology Stack</h2>
+        <ul>
+            <li>Python</li>
+            <li>Pandas</li>
+            <li>NumPy</li>
+            <li>Scikit-learn</li>
+        </ul>
+    </section>
+
+    <section class="code-snippet">
+        <h2>Code Snippet</h2>
+        <pre>
+<code>
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+df = pd.read_csv("movie_dataset.csv")
+features = ['keywords', 'genres', 'popularity', 'director', 'cast']
+
+# Fill missing values and combine features
+for feature in features:
+    df[feature] = df[feature].fillna(' ')
+
+df["combine_feature"] = df.apply(lambda row: ' '.join(str(row[f]) for f in features), axis=1)
+vectorizer = CountVectorizer()
+matrix = vectorizer.fit_transform(df["combine_feature"])
+similarity = cosine_similarity(matrix)
+
+def get_recommendations(movie_title):
+    index = df[df.title == movie_title].index[0]
+    similar_movies = list(enumerate(similarity[index]))
+    sorted_movies = sorted(similar_movies, key=lambda x: x[1], reverse=True)
+    recommendations = [df.iloc[i[0]].title for i in sorted_movies[1:11]]
+    return recommendations
+</code>
+        </pre>
+    </section>
+
+    <section class="demo">
+        <h2>How to Run</h2>
+        <p>To run the project:</p>
+        <ol>
+            <li>Install the necessary libraries: <code>pip install pandas numpy scikit-learn</code></li>
+            <li>Download the <code>movie_dataset.csv</code> file and place it in the project folder.</li>
+            <li>Run the script using <code>python movie_recommendation.py</code> and enter the name of a movie when prompted.</li>
+        </ol>
+    </section>
+
+    <section class="output">
+        <h2>Example Output</h2>
+        <p>If you input "The Godfather", you might get recommendations like:</p>
+        <div class="example-output">
+            <ul>
+                <li>The Godfather: Part II</li>
+                <li>Goodfellas</li>
+                <li>Scarface</li>
+                <li>Pulp Fiction</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
