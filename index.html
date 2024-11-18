@@ -17,16 +17,10 @@
         }
 
         header {
-            background: linear-gradient(45deg, #4A90E2, #A7C7E7);
+            background: linear-gradient(to right, #4A90E2, #A7C7E7);
             color: #fff;
             padding: 20px 0;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-            animation: gradient-animation 8s infinite alternate;
-        }
-
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
         }
 
         nav ul {
@@ -53,9 +47,10 @@
             width: 300px;
             height: 300px;
             border-radius: 50%;
-            object-fit: fill;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            object-fit: contain;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             margin: 20px auto;
+            display: block;
         }
 
         section {
@@ -68,65 +63,40 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
         }
 
-        #career-interests {
-            background: #f0f5ff;
+        #interests {
+            background-color: rgba(230, 240, 255, 0.9);
             border-radius: 10px;
             padding: 30px;
-            margin-top: 20px;
-            text-align: left;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline {
-            position: relative;
             max-width: 800px;
-            margin: auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #4A90E2;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        .timeline-item {
-            padding: 20px;
-            position: relative;
-            background-color: #A7C7E7;
-            border-radius: 10px;
-            width: 45%;
+            margin: 20px auto;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .timeline-item.left {
-            left: 0;
+        .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
         }
 
-        .timeline-item.right {
-            left: 55%;
+        .interest-item {
+            background-color: #A7C7E7;
+            border-radius: 10px;
+            padding: 15px;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #4A90E2;
-            border-radius: 50%;
-            top: 15px;
-            left: -10px;
-        }
-
-        .timeline-item.right::after {
-            left: auto;
-            right: -10px;
+        .interest-item h3 {
+            color: #4A90E2;
+            margin-bottom: 10px;
         }
 
         footer {
@@ -143,14 +113,16 @@
     <nav>
         <ul>
             <li><a href="#about-me">About Me</a></li>
-            <li><a href="#career-interests">Career Interests</a></li>
-            <li><a href="#interests">Interests</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#projects">Projects</a></li>
         </ul>
     </nav>
 </header>
 
+<!-- Profile Picture Section -->
 <img src="Screenshot 2024-04-22 at 13.27.49.png" alt="Rajat Jain's Profile Picture" class="profile-image">
 
+<!-- About Me Section -->
 <section id="about-me">
     <h2>Who am I?</h2>
     <p>
@@ -161,35 +133,26 @@
     </p>
 </section>
 
-<section id="career-interests">
-    <h2>Career Interests</h2>
-    <div class="timeline">
-        <div class="timeline-item left">
-            <h3>Machine Learning Engineering</h3>
-            <p>Building intelligent models that analyze data and deliver actionable insights, with a focus on fintech and sports analytics.</p>
-        </div>
-        <div class="timeline-item right">
-            <h3>Software Development</h3>
-            <p>Creating efficient, scalable, and user-friendly software solutions in dynamic environments, particularly in fintech and fitness tech.</p>
-        </div>
-        <div class="timeline-item left">
-            <h3>Fintech and Fitness Tech</h3>
-            <p>Integrating data-driven solutions to enhance user experiences and build impactful products in finance and fitness technology.</p>
-        </div>
-        <div class="timeline-item right">
-            <h3>Collaborating with Startups in AI</h3>
-            <p>Partnering with innovative startups to contribute to impactful AI projects and help shape the future of technology.</p>
-        </div>
-    </div>
-</section>
-
+<!-- Interests and Ambitions Section -->
 <section id="interests">
     <h2>Interests and Ambitions</h2>
     <div class="interest-list">
-        <div class="interest-item"><h3>Traveling</h3><p>I love exploring new places. Madagascar and New Zealand are my favorites.</p></div>
-        <div class="interest-item"><h3>Sports Enthusiast</h3><p>My favorites are football (FC Barcelona) and squash.</p></div>
-        <div class="interest-item"><h3>Reading</h3><p>"The Fountainhead" has shaped my outlook towards my career.</p></div>
-        <div class="interest-item"><h3>Ambition for AI</h3><p>Driven to make an impact in the AI industry by solving real-world challenges.</p></div>
+        <div class="interest-item">
+            <h3>Traveling</h3>
+            <p>I love exploring new places with my family. The most interesting place I've visited is Madagascar, and the most beautiful place is New Zealand.</p>
+        </div>
+        <div class="interest-item">
+            <h3>Sports Enthusiast</h3>
+            <p>I've played many sports growing up, but my favorites are football and squash. I support FC Barcelona and enjoy playing squash regularly.</p>
+        </div>
+        <div class="interest-item">
+            <h3>Reading</h3>
+            <p>I have recently started reading books, and "The Fountainhead" has had a significant impact on my outlook towards my career and ambitions.</p>
+        </div>
+        <div class="interest-item">
+            <h3>Ambition for AI</h3>
+            <p>Growing up in an entrepreneurial environment, I am driven to make a meaningful impact in the AI industry. I aspire to leverage my skills and passion for technology to develop innovative solutions that address real-world challenges.</p>
+        </div>
     </div>
 </section>
 
