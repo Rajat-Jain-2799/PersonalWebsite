@@ -1,97 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Recommendation System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Rajat Jain's Portfolio</title>
+    <style>
+        /* Unified styling with the main portfolio */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #A7C7E7, #F3ECEC);
+            color: #333;
+            text-align: center;
+            scroll-behavior: smooth;
+        }
 
-<!-- Inline CSS for styling -->
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        header {
+            background: linear-gradient(to right, #4A90E2, #A7C7E7);
+            color: #fff;
+            padding: 20px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        color: #333;
-    }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
 
-    .container {
-        width: 80%;
-        margin: 20px auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        nav ul li a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-    h1 {
-        text-align: center;
-        color: #007BFF;
-    }
+        nav ul li a:hover {
+            color: #FFC107;
+        }
 
-    h2 {
-        margin-top: 20px;
-        color: #007BFF;
-    }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
-    p {
-        line-height: 1.6;
-    }
+        h1 {
+            color: #4A90E2;
+        }
 
-    ul, ol {
-        margin-left: 20px;
-    }
+        h2 {
+            margin-top: 20px;
+            color: #007BFF;
+        }
 
-    pre {
-        background: #f0f0f0;
-        padding: 10px;
-        border-radius: 5px;
-        overflow-x: auto;
-    }
+        .project-section {
+            margin-bottom: 40px;
+        }
 
-    code {
-        color: #d63384;
-    }
+        p {
+            line-height: 1.6;
+            text-align: left;
+        }
 
-    .example-output {
-        background: #e8f5e9;
-        padding: 10px;
-        border-radius: 5px;
-        margin-top: 10px;
-    }
-</style>
+        ul, ol {
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #d63384;
+        }
+
+        .example-output {
+            background: #e8f5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: #4A90E2;
+            color: #fff;
+            padding: 15px 0;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
+
 <header>
-    <h1>Rajat Jain's Resume</h1>
+    <h1>Rajat Jain's Projects</h1>
     <nav>
         <ul>
-            <li><a href="index.html" class="transition">About me</a></li>
-            <li><a href="Website.html" class="transition">Resume</a></li>
-            <li><a href="project.html" class="transition">Projects</a></li>
+            <li><a href="index.html">About me</a></li>
+            <li><a href="Website.html">Resume</a></li>
+            <li><a href="project.html">Projects</a></li>
         </ul>
     </nav>
 </header>
-   
+
 <div class="container">
-    <h1>Movie Recommendation System</h1>
-    <p>A machine learning-based project that recommends similar movies based on user input.</p>
+    <!-- Project 1: Movie Recommendation System -->
+    <section class="project-section">
+        <h1>Project 1: Movie Recommendation System</h1>
+        <p>A machine learning-based project that recommends similar movies based on user input.</p>
 
-    <section class="overview">
         <h2>Project Overview</h2>
-        <p>This project uses a movie dataset to recommend movies based on various features such as keywords, genres, popularity, director, and cast. It uses text processing and cosine similarity to find and recommend similar movies.</p>
-    </section>
+        <p>This project uses a movie dataset to recommend movies based on features like keywords, genres, popularity, director, and cast. It leverages text processing and cosine similarity to find and recommend similar movies.</p>
 
-    <section class="dataset">
         <h2>Dataset Used</h2>
-        <p>The project uses a dataset containing information about movies, including their titles, genres, keywords, popularity, director, and cast.</p>
-    </section>
+        <p>The dataset includes information about movies, such as titles, genres, keywords, popularity, director, and cast details.</p>
 
-    <section class="tech-stack">
         <h2>Technology Stack</h2>
         <ul>
             <li>Python</li>
@@ -99,9 +133,7 @@
             <li>NumPy</li>
             <li>Scikit-learn</li>
         </ul>
-    </section>
 
-    <section class="code-snippet">
         <h2>Code Snippet</h2>
         <pre>
 <code>
@@ -129,19 +161,15 @@ def get_recommendations(movie_title):
     return recommendations
 </code>
         </pre>
-    </section>
 
-    <section class="demo">
         <h2>How to Run</h2>
         <p>To run the project:</p>
         <ol>
             <li>Install the necessary libraries: <code>pip install pandas numpy scikit-learn</code></li>
             <li>Download the <code>movie_dataset.csv</code> file and place it in the project folder.</li>
-            <li>Run the script using <code>python movie_recommendation.py</code> and enter the name of a movie when prompted.</li>
+            <li>Run the script using <code>python movie_recommendation.py</code> and input a movie title when prompted.</li>
         </ol>
-    </section>
 
-    <section class="output">
         <h2>Example Output</h2>
         <p>If you input "The Godfather", you might get recommendations like:</p>
         <div class="example-output">
@@ -154,6 +182,10 @@ def get_recommendations(movie_title):
         </div>
     </section>
 </div>
+
+<footer>
+    <p>&copy; 2024 Rajat Jain. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
