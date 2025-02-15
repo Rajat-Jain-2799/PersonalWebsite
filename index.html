@@ -49,39 +49,30 @@
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             margin: 20px auto;
             display: block;
+            transition: transform 0.3s;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
         }
 
         section {
-            padding: 40px 20px;
+            padding: 50px 20px;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         section.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        #about-me h2 span {
-            border-right: 3px solid;
-            white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
-            width: 0;
-            animation: typing 3s steps(40, end) forwards;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
         }
 
         .dark-mode-toggle {
@@ -91,23 +82,55 @@
             background: #4A90E2;
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px 18px;
             border-radius: 20px;
             cursor: pointer;
-            transition: background 0.3s;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .dark-mode-toggle:hover {
             background: #FFC107;
+            transform: scale(1.1);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         .timeline-item {
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            background: #A7C7E7;
+            padding: 15px;
+            border-radius: 10px;
+            width: 60%;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, background 0.3s;
         }
 
         .timeline-item:hover {
             transform: scale(1.05);
+            background: #88b3e6;
+        }
+
+        .contact-section {
+            background: #f0f5ff;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background: #4A90E2;
+            color: white;
+            padding: 15px;
+            font-size: 14px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -128,55 +151,34 @@
 <img src="profile.jpg" alt="Rajat Jain's Profile Picture" class="profile-image">
 
 <section id="about-me">
-    <h2>Who am I? <span>Hi, I'm Rajat Jain...</span></h2>
+    <h2>Who am I?</h2>
     <p>I am an Economics and Computer Science student passionate about AI and fintech. I built this portfolio to showcase my work and ambitions.</p>
 </section>
 
 <section id="career-interests">
     <h2>Career Interests</h2>
     <div class="timeline">
-        <div class="timeline-item" onclick="toggleDetail(this)">
+        <div class="timeline-item">
             <h3>Machine Learning Engineering</h3>
-            <p class="details">AI-driven solutions for data analysis and insights.</p>
+            <p>AI-driven solutions for data analysis and insights.</p>
         </div>
-        <div class="timeline-item" onclick="toggleDetail(this)">
+        <div class="timeline-item">
             <h3>Software Development</h3>
-            <p class="details">Building scalable applications in fintech and fitness tech.</p>
+            <p>Building scalable applications in fintech and fitness tech.</p>
         </div>
     </div>
 </section>
 
-<section id="interests">
-    <h2>Interests & Ambitions</h2>
-    <p>From sports to AI, I strive to blend my interests into my career journey.</p>
+<section class="contact-section">
+    <h2>Contact Me</h2>
+    <p>Email: rajat@example.com</p>
+    <p>LinkedIn: linkedin.com/in/rajatjain</p>
 </section>
 
 <footer>
     <p>&copy; 2024 Rajat Jain. All rights reserved.</p>
 </footer>
-
-<script>
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-    }
-
-    function toggleDetail(element) {
-        let details = element.querySelector(".details");
-        details.style.display = details.style.display === "block" ? "none" : "block";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section");
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.2 });
-        sections.forEach(section => observer.observe(section));
-    });
-</script>
 </body>
 </html>
+
 
