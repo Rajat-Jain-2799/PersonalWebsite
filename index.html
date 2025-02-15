@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rajat Jain | Professional Portfolio</title>
     <style>
-        /* General Styling */
+        /* Enhanced CSS with a professional and cohesive color palette */
         body {
             margin: 0;
             padding: 0;
@@ -13,12 +13,7 @@
             background: linear-gradient(to bottom right, #A7C7E7, #F3ECEC);
             color: #333;
             text-align: center;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .dark-mode {
-            background: #1a1a1a;
-            color: #f0f0f0;
+            scroll-behavior: smooth;
         }
 
         header {
@@ -49,88 +44,128 @@
         }
 
         .profile-image {
-            width: 220px;
-            height: 220px;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             margin: 20px auto;
             display: block;
-            transition: transform 0.3s;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.1);
         }
 
         section {
-            padding: 50px 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            padding: 40px 20px;
         }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        #about-me {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
         }
 
-        .dark-mode-toggle {
-            position: fixed;
-            top: 10px;
-            right: 20px;
-            background: #4A90E2;
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .dark-mode-toggle:hover {
-            background: #FFC107;
-            transform: scale(1.1);
+        #career-interests {
+            background: #f0f5ff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         .timeline {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4A90E2;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
         }
 
         .timeline-item {
-            background: #A7C7E7;
+            padding: 20px;
+            position: relative;
+            background-color: #A7C7E7;
+            border-radius: 10px;
+            width: 45%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 55%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #4A90E2;
+            border-radius: 50%;
+            top: 15px;
+            left: -10px;
+        }
+
+        .timeline-item.right::after {
+            left: auto;
+            right: -10px;
+        }
+
+        #interests {
+            background-color: rgba(230, 240, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 20px auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .interest-item {
+            background-color: #A7C7E7;
+            border-radius: 10px;
             padding: 15px;
-            border-radius: 10px;
-            width: 60%;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, background 0.3s;
         }
 
-        .timeline-item:hover {
-            transform: scale(1.05);
-            background: #88b3e6;
-        }
-
-        .contact-section {
-            background: #f0f5ff;
-            padding: 40px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin: 30px auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .interest-item h3 {
+            color: #4A90E2;
+            margin-bottom: 10px;
         }
 
         footer {
             background: #4A90E2;
-            color: white;
-            padding: 15px;
+            color: #fff;
+            padding: 15px 0;
             font-size: 14px;
-            margin-top: 40px;
         }
     </style>
 </head>
@@ -139,40 +174,59 @@
     <h1>Rajat Jain's Professional Hub</h1>
     <nav>
         <ul>
-            <li><a href="#about-me">About Me</a></li>
-            <li><a href="#career-interests">Career Interests</a></li>
-            <li><a href="#interests">Interests</a></li>
+            <li><a href="index.html" class="transition">About me</a></li>
+            <li><a href="Website.html" class="transition">Resume</a></li>
+            <li><a href="project.html" class="transition">Projects</a></li>
         </ul>
     </nav>
 </header>
 
-<button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+<!-- Profile Picture Section -->
+<img src="Screenshot 2024-04-22 at 13.27.49.png" alt="Rajat Jain's Profile Picture" class="profile-image">
 
-<img src="profile.jpg" alt="Rajat Jain's Profile Picture" class="profile-image">
-
+<!-- About Me Section -->
 <section id="about-me">
     <h2>Who am I?</h2>
-    <p>I am an Economics and Computer Science student passionate about AI and fintech. I built this portfolio to showcase my work and ambitions.</p>
+    <p>
+        Hi, I'm Rajat Jain, a current student at Tufts University, pursuing a degree in Economics with a minor in Computer Science. 
+        I built this website to showcase my skills and demonstrate that a focused minor can offer as much depth and expertise as a full major. 
+        My passion for technology has led me to explore advanced topics in software development, machine learning, and data analysis. 
+        Outside of academics, I am an avid sports enthusiast, a travel lover, and an aspiring professional in the tech industry.
+    </p>
 </section>
 
+<!-- Career Interests Section -->
 <section id="career-interests">
     <h2>Career Interests</h2>
     <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item left">
             <h3>Machine Learning Engineering</h3>
-            <p>AI-driven solutions for data analysis and insights.</p>
+            <p>Building intelligent models that analyze data and deliver actionable insights, with a focus on fintech and sports analytics.</p>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item right">
             <h3>Software Development</h3>
-            <p>Building scalable applications in fintech and fitness tech.</p>
+            <p>Creating efficient, scalable, and user-friendly software solutions in dynamic environments, particularly in fintech and fitness tech.</p>
+        </div>
+        <div class="timeline-item left">
+            <h3>Fintech and Fitness Tech</h3>
+            <p>Integrating data-driven solutions to enhance user experiences and build impactful products in finance and fitness technology.</p>
+        </div>
+        <div class="timeline-item right">
+            <h3>Collaborating with Startups in AI</h3>
+            <p>Partnering with innovative startups to contribute to impactful AI projects and help shape the future of technology.</p>
         </div>
     </div>
 </section>
 
-<section class="contact-section">
-    <h2>Contact Me</h2>
-    <p>Email: rajat@example.com</p>
-    <p>LinkedIn: linkedin.com/in/rajatjain</p>
+<!-- Interests and Ambitions Section -->
+<section id="interests">
+    <h2>Interests and Ambitions</h2>
+    <div class="interest-list">
+        <div class="interest-item"><h3>Traveling</h3><p>I love exploring new places with my family. The most interesting place I've visited is Madagascar, and the most beautiful place is New Zealand.</p></div>
+        <div class="interest-item"><h3>Sports Enthusiast</h3><p>I've played many sports growing up, but my favorites are football and squash. I support FC Barcelona and enjoy playing squash regularly.</p></div>
+        <div class="interest-item"><h3>Reading</h3><p>I have recently started reading books, and "The Fountainhead" has had a significant impact on my outlook towards my career and ambitions.</p></div>
+        <div class="interest-item"><h3>Ambition for AI</h3><p>Growing up in an entrepreneurial environment, I am driven to make a meaningful impact in the AI industry.</p></div>
+    </div>
 </section>
 
 <footer>
