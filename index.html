@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rajat Jain | Professional Portfolio</title>
     <style>
-        /* Enhanced CSS with a professional and cohesive color palette */
+        /* General Styling */
         body {
             margin: 0;
             padding: 0;
@@ -13,7 +13,12 @@
             background: linear-gradient(to bottom right, #A7C7E7, #F3ECEC);
             color: #333;
             text-align: center;
-            scroll-behavior: smooth;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background: #1a1a1a;
+            color: #f0f0f0;
         }
 
         header {
@@ -44,10 +49,10 @@
         }
 
         .profile-image {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            object-fit: contain;
+            object-fit: cover;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             margin: 20px auto;
             display: block;
@@ -55,117 +60,54 @@
 
         section {
             padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        #about-me {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        #career-interests {
-            background: #f0f5ff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 20px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        #about-me h2 span {
+            border-right: 3px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            width: 0;
+            animation: typing 3s steps(40, end) forwards;
         }
 
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: auto;
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
         }
 
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: #4A90E2;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
+        .dark-mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dark-mode-toggle:hover {
+            background: #FFC107;
         }
 
         .timeline-item {
-            padding: 20px;
-            position: relative;
-            background-color: #A7C7E7;
-            border-radius: 10px;
-            width: 45%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
         }
 
-        .timeline-item.left {
-            left: 0;
-        }
-
-        .timeline-item.right {
-            left: 55%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #4A90E2;
-            border-radius: 50%;
-            top: 15px;
-            left: -10px;
-        }
-
-        .timeline-item.right::after {
-            left: auto;
-            right: -10px;
-        }
-
-        #interests {
-            background-color: rgba(230, 240, 255, 0.9);
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 800px;
-            margin: 20px auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .interest-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-        }
-
-        .interest-item {
-            background-color: #A7C7E7;
-            border-radius: 10px;
-            padding: 15px;
-            width: 45%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-
-        .interest-item h3 {
-            color: #4A90E2;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background: #4A90E2;
-            color: #fff;
-            padding: 15px 0;
-            font-size: 14px;
+        .timeline-item:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -174,65 +116,67 @@
     <h1>Rajat Jain's Professional Hub</h1>
     <nav>
         <ul>
-            <li><a href="index.html" class="transition">About me</a></li>
-            <li><a href="Website.html" class="transition">Resume</a></li>
-            <li><a href="project.html" class="transition">Projects</a></li>
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#career-interests">Career Interests</a></li>
+            <li><a href="#interests">Interests</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- Profile Picture Section -->
-<img src="Screenshot 2024-04-22 at 13.27.49.png" alt="Rajat Jain's Profile Picture" class="profile-image">
+<button class="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
 
-<!-- About Me Section -->
+<img src="profile.jpg" alt="Rajat Jain's Profile Picture" class="profile-image">
+
 <section id="about-me">
-    <h2>Who am I?</h2>
-    <p>
-        Hi, I'm Rajat Jain, a current student at Tufts University, pursuing a degree in Economics with a minor in Computer Science. 
-        I built this website to showcase my skills and demonstrate that a focused minor can offer as much depth and expertise as a full major. 
-        My passion for technology has led me to explore advanced topics in software development, machine learning, and data analysis. 
-        Outside of academics, I am an avid sports enthusiast, a travel lover, and an aspiring professional in the tech industry.
-    </p>
+    <h2>Who am I? <span>Hi, I'm Rajat Jain...</span></h2>
+    <p>I am an Economics and Computer Science student passionate about AI and fintech. I built this portfolio to showcase my work and ambitions.</p>
 </section>
 
-<!-- Career Interests Section -->
 <section id="career-interests">
     <h2>Career Interests</h2>
     <div class="timeline">
-        <div class="timeline-item left">
+        <div class="timeline-item" onclick="toggleDetail(this)">
             <h3>Machine Learning Engineering</h3>
-            <p>Building intelligent models that analyze data and deliver actionable insights, with a focus on fintech and sports analytics.</p>
+            <p class="details">AI-driven solutions for data analysis and insights.</p>
         </div>
-        <div class="timeline-item right">
+        <div class="timeline-item" onclick="toggleDetail(this)">
             <h3>Software Development</h3>
-            <p>Creating efficient, scalable, and user-friendly software solutions in dynamic environments, particularly in fintech and fitness tech.</p>
-        </div>
-        <div class="timeline-item left">
-            <h3>Fintech and Fitness Tech</h3>
-            <p>Integrating data-driven solutions to enhance user experiences and build impactful products in finance and fitness technology.</p>
-        </div>
-        <div class="timeline-item right">
-            <h3>Collaborating with Startups in AI</h3>
-            <p>Partnering with innovative startups to contribute to impactful AI projects and help shape the future of technology.</p>
+            <p class="details">Building scalable applications in fintech and fitness tech.</p>
         </div>
     </div>
 </section>
 
-<!-- Interests and Ambitions Section -->
 <section id="interests">
-    <h2>Interests and Ambitions</h2>
-    <div class="interest-list">
-        <div class="interest-item"><h3>Traveling</h3><p>I love exploring new places with my family. The most interesting place I've visited is Madagascar, and the most beautiful place is New Zealand.</p></div>
-        <div class="interest-item"><h3>Sports Enthusiast</h3><p>I've played many sports growing up, but my favorites are football and squash. I support FC Barcelona and enjoy playing squash regularly.</p></div>
-        <div class="interest-item"><h3>Reading</h3><p>I have recently started reading books, and "The Fountainhead" has had a significant impact on my outlook towards my career and ambitions.</p></div>
-        <div class="interest-item"><h3>Ambition for AI</h3><p>Growing up in an entrepreneurial environment, I am driven to make a meaningful impact in the AI industry.</p></div>
-    </div>
+    <h2>Interests & Ambitions</h2>
+    <p>From sports to AI, I strive to blend my interests into my career journey.</p>
 </section>
 
 <footer>
     <p>&copy; 2024 Rajat Jain. All rights reserved.</p>
 </footer>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+
+    function toggleDetail(element) {
+        let details = element.querySelector(".details");
+        details.style.display = details.style.display === "block" ? "none" : "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.2 });
+        sections.forEach(section => observer.observe(section));
+    });
+</script>
 </body>
 </html>
-
 
